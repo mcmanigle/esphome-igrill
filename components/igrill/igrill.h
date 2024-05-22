@@ -10,6 +10,7 @@
 #include "esphome/components/ble_client/ble_client.h"
 #include "esphome/components/esp32_ble_tracker/esp32_ble_tracker.h"
 #include "esphome/components/sensor/sensor.h"
+#include "esphome/components/binary_sensor/binary_sensor.h"
 #include "esphome/core/component.h"
 #include "esphome/core/log.h"
 
@@ -59,6 +60,7 @@ namespace esphome
 
       void gattc_event_handler(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp_ble_gattc_cb_param_t *param) override;
       void set_temperature_probe(sensor::Sensor *temperature, int probe_num) { sensors_[probe_num-1] = temperature; }
+      void set_plugged_probe(binary_sensor::BinarySensor *plugged, int probe_num) { plugged_binary_sensors_[probe_num-1] = plugged; }
       void set_pulse_actual1(sensor::Sensor *pulse_actual) { pulse_heating_actual1_ = pulse_actual; }
       void set_pulse_actual2(sensor::Sensor *pulse_actual) { pulse_heating_actual2_ = pulse_actual; }
       void set_pulse_setpoint1(sensor::Sensor *pulse_setpoint) { pulse_heating_setpoint1_ = pulse_setpoint; }
@@ -95,6 +97,7 @@ namespace esphome
       const char *unit_of_measurement_{nullptr};
       
       std::vector<sensor::Sensor *> sensors_ = {nullptr, nullptr, nullptr, nullptr};
+      std::vector<binary_sensor::BinarySensor *> plugged_binary_sensors_ = {nullptr, nullptr, nullptr, nullptr};
       sensor::Sensor *battery_level_sensor_{nullptr};
       sensor::Sensor *propane_level_sensor_{nullptr};
       sensor::Sensor *pulse_heating_actual1_{nullptr};

@@ -65,3 +65,14 @@ binary_sensor:
     id: v3_connection_bin
     device_class: connectivity
     entity_category: diagnostic
+  - platform: igrill
+    ble_client_id: igrill_v3
+    update_interval: 30s # default
+    temperature_probe1_plugged:
+      name: "IGrill v3 temp probe 1 Plugged"
+    temperature_probe1_plugged:
+      name: "IGrill v3 temp probe 2 Plugged"
+    temperature_probe1_plugged:
+      name: "IGrill v3 temp probe 3 Plugged"
+    temperature_probe1_plugged:
+      name: "IGrill v3 temp probe 4 Plugged"
