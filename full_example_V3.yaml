@@ -70,9 +70,9 @@ binary_sensor:
     update_interval: 30s # default
     temperature_probe1_plugged:
       name: "IGrill v3 temp probe 1 Plugged"
-    temperature_probe1_plugged:
+    temperature_probe2_plugged:
       name: "IGrill v3 temp probe 2 Plugged"
-    temperature_probe1_plugged:
+    temperature_probe3_plugged:
       name: "IGrill v3 temp probe 3 Plugged"
-    temperature_probe1_plugged:
+    temperature_probe4_plugged:
       name: "IGrill v3 temp probe 4 Plugged"
