@@ -46,8 +46,7 @@ CONFIG_SCHEMA = cv.All(
 
 
 async def to_code(config):
-    var = cg.new_Pvariable(config[CONF_ID])
-    await cg.register_component(var, config)
+    var = cg.Pvariable(config[CONF_ID])
 
     if CONF_TEMPERATURE_PROBE1_PLUGGED in config:
         sens = await binary_sensor.new_binary_sensor(config[CONF_TEMPERATURE_PROBE1_PLUGGED])
