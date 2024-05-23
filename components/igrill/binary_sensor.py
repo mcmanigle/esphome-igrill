@@ -22,7 +22,7 @@ CONF_TEMPERATURE_PROBE4_PLUGGED = "temperature_probe4_plugged"
 CONFIG_SCHEMA = cv.All(
     cv.Schema(
         {
-            cv.GenerateID(): cv.declare_id(IGrill),
+            cv.GenerateID(): cv.use_id(IGrill),
             cv.Optional(CONF_TEMPERATURE_PROBE1_PLUGGED): binary_sensor.binary_sensor_schema(
                 device_class=DEVICE_CLASS_CONNECTIVITY,
                 entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
@@ -49,8 +49,6 @@ CONFIG_SCHEMA = cv.All(
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
     await cg.register_component(var, config)
-
-    await ble_client.register_ble_node(var, config)
 
     if CONF_TEMPERATURE_PROBE1_PLUGGED in config:
         sens = await binary_sensor.new_binary_sensor(config[CONF_TEMPERATURE_PROBE1_PLUGGED])
