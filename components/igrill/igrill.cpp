@@ -313,7 +313,10 @@ namespace esphome
       {
         this->sensors_[probe]->publish_state(temp);
       }
-      this->plugged_binary_sensors_[probe]->publish_state(!probe_unplugged);
+      if (this->plugged_binary_sensors_[probe])
+      {
+        this->plugged_binary_sensors_[probe]->publish_state(!probe_unplugged);
+      }
     }
 
     void IGrill::update()
