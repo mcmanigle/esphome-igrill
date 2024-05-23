@@ -41,8 +41,7 @@ CONFIG_SCHEMA = cv.All(
             ),
         }
     )
-    .extend(cv.polling_component_schema("30s"))
-    .extend(ble_client.BLE_CLIENT_SCHEMA),
+    .extend(cv.polling_component_schema("30s")),
 )
 
 
